@@ -21,17 +21,10 @@ public class Main {
 
     public static Set<Integer> symmetricDifference(Set<Integer> set1, Set<Integer> set2) {
 
-        Set<Integer> setDifference = new HashSet<>();
-        for (Integer integer : set1) {
-            if (!set2.contains(integer)) {
-                setDifference.add(integer);
-            }
-        }
-        for (Integer integer : set2) {
-            if (!set1.contains(integer)) {
-                setDifference.add(integer);
-            }
-        }
+        Set<Integer> setDifference = new HashSet<>(set1);
+        setDifference.removeAll(set2);
+        set2.removeAll(set1);
+        setDifference.addAll(set2);
 
         return setDifference;
     }
